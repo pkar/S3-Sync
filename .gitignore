@@ -1,4 +1,5 @@
 *.py[co]
+local.sh
 
 # Packages
 *.egg
