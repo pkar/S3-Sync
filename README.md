@@ -9,5 +9,5 @@ Easy, just set your environment key, secret and pick a folder.
     python s3.py directory_to_sync
 
 
-    
+There are more robust options out there, but this is quick.
 

@@ -29,7 +29,10 @@ class StaticSync:
     for dirname, dirnames, filenames in os.walk(self.sync_dir):
       for filename in filenames:
         path = os.path.join(dirname, filename)
-        md5 = hashlib.md5(open(path, 'r').read()).hexdigest()
+        try:
+          md5 = hashlib.md5(open(path, 'r').read()).hexdigest()
+        except IOError:
+          continue
         all_files[path] = md5
     return all_files
   
