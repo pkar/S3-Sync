@@ -44,7 +44,15 @@ class StaticSync:
 
       aws_key = Key(self.bucket)
       aws_key.key = name 
-      aws_key.set_contents_from_filename(path)
+      try:
+        aws_key.set_contents_from_filename(path)
+      except: # if the user gives up or a firefly falls into a resistor
+        # Many an option, maybe delete MD5 and start over for the lazy
+        # For the self motivated add  some logic to remove changed files
+        # in MD5
+        print 'Failed, probably remove MD5 in {0} and start over'.format(
+          self.sync_dir)
+        exit()
 
     length = len(remove_files)
     for idx, path in enumerate(remove_files):
